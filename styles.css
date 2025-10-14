@@ -974,6 +974,15 @@ body {
     }
 }
 
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
 .fade-in-up {
     animation: fadeInUp 0.6s ease-out;
 }

@@ -210,10 +210,30 @@ function typeWriter(element, text, speed = 100) {
 
 // Initialize typing animation when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        // Set the final HTML content directly without typing animation
-        heroTitle.innerHTML = 'Hi, I\'m <span class="highlight">Arham V. Doshi</span>';
+    const typingElement = document.getElementById('typing-text');
+    if (typingElement) {
+        const text = 'Arham Doshi';
+        let i = 0;
+        
+        // Add cursor element
+        const cursor = document.createElement('span');
+        cursor.textContent = '|';
+        cursor.style.animation = 'blink 1s infinite';
+        cursor.style.marginLeft = '2px';
+        
+        function typeWriter() {
+            if (i < text.length) {
+                typingElement.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 150); // Speed of typing
+            } else {
+                // Add cursor after typing is complete
+                typingElement.appendChild(cursor);
+            }
+        }
+        
+        // Start typing animation after a short delay
+        setTimeout(typeWriter, 500);
     }
 });
 
